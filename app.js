@@ -1,5 +1,5 @@
 
-require(‘dotenv’).config()
+//require(‘dotenv’).config()
 
 const express = require('express')
 const app = express()
@@ -11,6 +11,10 @@ app.engine('mustache',mustacheExpress())
 // mustache pages will be inside the views folder
 app.set('views','./views')
 app.set('view engine','mustache')
+
+app.get('/',function(req,res){
+  res.render("index")
+})
 
 app.get('/posts',function(req,res){
   models.Post.findAll().then(function(posts){
